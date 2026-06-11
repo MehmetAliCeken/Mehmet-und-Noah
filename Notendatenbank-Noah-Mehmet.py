@@ -2,6 +2,7 @@
 #21.05.2026 (Noah)
 #28.05.2026 (Mehmet, erste zwei Stunden (KSN))
 #28.05.2026 (Noah, letzten zwei Studen (FSST))
+#11.06.2026 (Mehmet, Fertigstellung des Programms)
 
 
 #Programmierprojekt
@@ -18,7 +19,7 @@ class NotenDatenbank:
 	#Herstellunng der Verbindung zur lokalen Datenbank
     def __init__(self, Datenbank="Schulnoten.db"):
         self.Verbindung = sqlite3.connect(Datenbank)
-        self.Datenbankzeiger = self.Verbindung.cursor()
+        self.Datenbankzeiger = self.Verbindung.cursor() 
         self.TabelleErstellen()
 
 	#Erstellt die Notentabelle
@@ -45,7 +46,7 @@ class NotenDatenbank:
 	#Löscht einen Eintrag anhand seiner Identifikationsnummer
     def Löschen(self, EintragIdentifikationsnummer):
         SQLBefehl = "DELETE FROM FächerNoten WHERE Identifikationsnummer = ?"
-        self.Datenbankzeiger.execute(SQLBefehl, (EintragIdentifikationsnummer))
+        self.Datenbankzeiger.execute(SQLBefehl, (EintragIdentifikationsnummer,))
         self.Verbindung.commit()
 
 	#Schließt Verbindung beim Beenden des Programms
